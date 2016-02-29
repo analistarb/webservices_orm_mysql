@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="webserviceModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="webserviceModelStoreContainer">
+    <EntitySet Name="produto" EntityType="webserviceModel.Store.produto" store:Type="Tables" Schema="webservice" />
+    <EntitySet Name="produtocategoria" EntityType="webserviceModel.Store.produtocategoria" store:Type="Tables" Schema="webservice" />
+    <AssociationSet Name="FK_Produto_ProdutoCategoria" Association="webserviceModel.Store.FK_Produto_ProdutoCategoria">
+      <End Role="produtocategoria" EntitySet="produtocategoria" />
+      <End Role="produto" EntitySet="produto" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="produto">
+    <Key>
+      <PropertyRef Name="ProdutoId" />
+    </Key>
+    <Property Name="ProdutoId" Type="int" Nullable="false" />
+    <Property Name="Descricao" Type="varchar" MaxLength="50" />
+    <Property Name="ProdutoCategoriaId" Type="int" />
+    <Property Name="DataCadastro" Type="datetime" />
+  </EntityType>
+  <EntityType Name="produtocategoria">
+    <Key>
+      <PropertyRef Name="ProdutoCategoriaId" />
+    </Key>
+    <Property Name="ProdutoCategoriaId" Type="int" Nullable="false" />
+    <Property Name="Descricao" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Produto_ProdutoCategoria">
+    <End Role="produtocategoria" Type="webserviceModel.Store.produtocategoria" Multiplicity="0..1" />
+    <End Role="produto" Type="webserviceModel.Store.produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produtocategoria">
+        <PropertyRef Name="ProdutoCategoriaId" />
+      </Principal>
+      <Dependent Role="produto">
+        <PropertyRef Name="ProdutoCategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="uspConsultarProduto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="webservice" />
+</Schema>

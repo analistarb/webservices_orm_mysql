@@ -1,0 +1,13 @@
+C:\Users\Workstation\Desktop\Projeto Vazio Funcionando\04) Web\Application\3 - DAL\bin\Debug\3 - DAL.dll
+C:\Users\Workstation\Desktop\Projeto Vazio Funcionando\04) Web\Application\3 - DAL\bin\Debug\3 - DAL.pdb
+C:\Users\Workstation\Desktop\Projeto Vazio Funcionando\04) Web\Application\3 - DAL\obj\Debug\3 - DAL.csprojResolveAssemblyReference.cache
+C:\Users\Workstation\Desktop\Projeto Vazio Funcionando\04) Web\Application\3 - DAL\obj\Debug\3 - DAL.dll
+C:\Users\Workstation\Desktop\Projeto Vazio Funcionando\04) Web\Application\3 - DAL\obj\Debug\3 - DAL.pdb
+C:\Users\Workstation\Desktop\Zero_Extremo\3 - DAL\bin\Debug\3 - DAL.dll.config
+C:\Users\Workstation\Desktop\Zero_Extremo\3 - DAL\bin\Debug\3 - DAL.dll
+C:\Users\Workstation\Desktop\Zero_Extremo\3 - DAL\bin\Debug\3 - DAL.pdb
+C:\Users\Workstation\Desktop\Zero_Extremo\3 - DAL\bin\Debug\EntityFramework.dll
+C:\Users\Workstation\Desktop\Zero_Extremo\3 - DAL\bin\Debug\EntityFramework.xml
+C:\Users\Workstation\Desktop\Zero_Extremo\3 - DAL\obj\Debug\3 - DAL.dll
+C:\Users\Workstation\Desktop\Zero_Extremo\3 - DAL\obj\Debug\3 - DAL.pdb
+C:\Users\Workstation\Desktop\Zero_Extremo\3 - DAL\obj\Debug\3 - DAL.csprojResolveAssemblyReference.cache

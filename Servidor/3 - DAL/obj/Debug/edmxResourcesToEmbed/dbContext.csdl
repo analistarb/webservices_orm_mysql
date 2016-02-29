@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="webserviceModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="webserviceEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="produto" EntityType="webserviceModel.produto" />
+    <EntitySet Name="produtocategoria" EntityType="webserviceModel.produtocategoria" />
+    <AssociationSet Name="FK_Produto_ProdutoCategoria" Association="webserviceModel.FK_Produto_ProdutoCategoria">
+      <End Role="produtocategoria" EntitySet="produtocategoria" />
+      <End Role="produto" EntitySet="produto" />
+    </AssociationSet>
+    <FunctionImport Name="uspConsultarProduto" ReturnType="Collection(webserviceModel.uspConsultarProduto_Result)" />
+  </EntityContainer>
+  <EntityType Name="produto">
+    <Key>
+      <PropertyRef Name="ProdutoId" />
+    </Key>
+    <Property Name="ProdutoId" Type="Int32" Nullable="false" />
+    <Property Name="Descricao" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ProdutoCategoriaId" Type="Int32" />
+    <Property Name="DataCadastro" Type="DateTime" />
+    <NavigationProperty Name="produtocategoria" Relationship="webserviceModel.FK_Produto_ProdutoCategoria" FromRole="produto" ToRole="produtocategoria" />
+  </EntityType>
+  <EntityType Name="produtocategoria">
+    <Key>
+      <PropertyRef Name="ProdutoCategoriaId" />
+    </Key>
+    <Property Name="ProdutoCategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="Descricao" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="produto" Relationship="webserviceModel.FK_Produto_ProdutoCategoria" FromRole="produtocategoria" ToRole="produto" />
+  </EntityType>
+  <Association Name="FK_Produto_ProdutoCategoria">
+    <End Role="produtocategoria" Type="webserviceModel.produtocategoria" Multiplicity="0..1" />
+    <End Role="produto" Type="webserviceModel.produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produtocategoria">
+        <PropertyRef Name="ProdutoCategoriaId" />
+      </Principal>
+      <Dependent Role="produto">
+        <PropertyRef Name="ProdutoCategoriaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="uspConsultarProduto_Result" />
+</Schema>

@@ -1,0 +1,13 @@
+C:\Users\Workstation\Desktop\Projeto Vazio Funcionando\04) Web\Application\2 - BLL\bin\Debug\2 - BLL.dll
+C:\Users\Workstation\Desktop\Projeto Vazio Funcionando\04) Web\Application\2 - BLL\bin\Debug\2 - BLL.pdb
+C:\Users\Workstation\Desktop\Projeto Vazio Funcionando\04) Web\Application\2 - BLL\obj\Debug\2 - BLL.dll
+C:\Users\Workstation\Desktop\Projeto Vazio Funcionando\04) Web\Application\2 - BLL\obj\Debug\2 - BLL.pdb
+C:\Users\Workstation\Desktop\Zero_Extremo\2 - BLL\bin\Debug\2 - BLL.dll
+C:\Users\Workstation\Desktop\Zero_Extremo\2 - BLL\bin\Debug\2 - BLL.pdb
+C:\Users\Workstation\Desktop\Zero_Extremo\2 - BLL\bin\Debug\3 - DAL.dll
+C:\Users\Workstation\Desktop\Zero_Extremo\2 - BLL\bin\Debug\EntityFramework.dll
+C:\Users\Workstation\Desktop\Zero_Extremo\2 - BLL\bin\Debug\3 - DAL.pdb
+C:\Users\Workstation\Desktop\Zero_Extremo\2 - BLL\bin\Debug\EntityFramework.xml
+C:\Users\Workstation\Desktop\Zero_Extremo\2 - BLL\obj\Debug\2 - BLL.csprojResolveAssemblyReference.cache
+C:\Users\Workstation\Desktop\Zero_Extremo\2 - BLL\obj\Debug\2 - BLL.dll
+C:\Users\Workstation\Desktop\Zero_Extremo\2 - BLL\obj\Debug\2 - BLL.pdb

@@ -24,7 +24,6 @@ INSERT INTO `produto` VALUES ('3', 'MICROSOFT', '2', '2016-01-24 14:26:55');
 INSERT INTO `produto` VALUES ('4', 'LOGITEC', '2', '2016-01-24 14:26:55');
 INSERT INTO `produto` VALUES ('5', 'HP OFFICEJET', '3', '2016-01-24 14:26:55');
 INSERT INTO `produto` VALUES ('6', 'HP LASERJET', '3', '2016-01-24 14:26:55');
-INSERT INTO `produto` VALUES ('7', 'teste produto', '1', '2016-02-29 11:19:09');
 
 -- ----------------------------
 -- Table structure for `produtocategoria`
@@ -42,7 +41,12 @@ CREATE TABLE `produtocategoria` (
 INSERT INTO `produtocategoria` VALUES ('1', 'NOTEBOOKS');
 INSERT INTO `produtocategoria` VALUES ('2', 'TECLADOS');
 INSERT INTO `produtocategoria` VALUES ('3', 'IMPRESSORAS');
-INSERT INTO `produtocategoria` VALUES ('4', 'asdsad');
+
+-- ----------------------------
+-- View structure for `vproduto_categoria`
+-- ----------------------------
+DROP VIEW IF EXISTS `vproduto_categoria`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vproduto_categoria` AS select `produto`.`ProdutoId` AS `Id`,`produto`.`Descricao` AS `ProdutoDesc`,`produto`.`DataCadastro` AS `DataCadastro`,`produtocategoria`.`ProdutoCategoriaId` AS `CategoriaId`,`produtocategoria`.`Descricao` AS `CategoriaDesc` from (`produto` join `produtocategoria`) where (`produto`.`ProdutoCategoriaId` = `produtocategoria`.`ProdutoCategoriaId`);
 
 -- ----------------------------
 -- Procedure structure for `uspConsultarProduto`

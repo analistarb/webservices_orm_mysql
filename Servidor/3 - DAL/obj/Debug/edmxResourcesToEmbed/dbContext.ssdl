@@ -1,9 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="webserviceModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="webserviceModelStoreContainer">
-    <EntitySet Name="produto" EntityType="webserviceModel.Store.produto" store:Type="Tables" Schema="webservice" />
-    <EntitySet Name="produtocategoria" EntityType="webserviceModel.Store.produtocategoria" store:Type="Tables" Schema="webservice" />
-    <AssociationSet Name="FK_Produto_ProdutoCategoria" Association="webserviceModel.Store.FK_Produto_ProdutoCategoria">
+<Schema Namespace="webservicesModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="webservicesModelStoreContainer">
+    <EntitySet Name="produto" EntityType="webservicesModel.Store.produto" store:Type="Tables" Schema="webservices" />
+    <EntitySet Name="produtocategoria" EntityType="webservicesModel.Store.produtocategoria" store:Type="Tables" Schema="webservices" />
+    <EntitySet Name="vproduto_categoria" EntityType="webservicesModel.Store.vproduto_categoria" store:Type="Views" store:Schema="webservices" store:Name="vproduto_categoria">
+      <DefiningQuery>SELECT
+      `vproduto_categoria`.`Id`, 
+      `vproduto_categoria`.`ProdutoDesc`, 
+      `vproduto_categoria`.`DataCadastro`, 
+      `vproduto_categoria`.`CategoriaId`, 
+      `vproduto_categoria`.`CategoriaDesc`
+      FROM `vproduto_categoria` AS `vproduto_categoria`</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Produto_ProdutoCategoria" Association="webservicesModel.Store.FK_Produto_ProdutoCategoria">
       <End Role="produtocategoria" EntitySet="produtocategoria" />
       <End Role="produto" EntitySet="produto" />
     </AssociationSet>
@@ -24,9 +33,23 @@
     <Property Name="ProdutoCategoriaId" Type="int" Nullable="false" />
     <Property Name="Descricao" Type="varchar" MaxLength="50" />
   </EntityType>
+  <!--Erros Encontrados Durante a Geração:
+      aviso 6002: A tabela/exibição 'webservices.vproduto_categoria' não tem uma chave primária definida. A chave foi inferida e a definição criada como uma tabela/exibição somente leitura.
+      -->
+  <EntityType Name="vproduto_categoria">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CategoriaId" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="ProdutoDesc" Type="varchar" MaxLength="50" />
+    <Property Name="DataCadastro" Type="datetime" />
+    <Property Name="CategoriaId" Type="int" Nullable="false" />
+    <Property Name="CategoriaDesc" Type="varchar" MaxLength="50" />
+  </EntityType>
   <Association Name="FK_Produto_ProdutoCategoria">
-    <End Role="produtocategoria" Type="webserviceModel.Store.produtocategoria" Multiplicity="0..1" />
-    <End Role="produto" Type="webserviceModel.Store.produto" Multiplicity="*" />
+    <End Role="produtocategoria" Type="webservicesModel.Store.produtocategoria" Multiplicity="0..1" />
+    <End Role="produto" Type="webservicesModel.Store.produto" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="produtocategoria">
         <PropertyRef Name="ProdutoCategoriaId" />
@@ -36,5 +59,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="uspConsultarProduto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="webservice" />
 </Schema>

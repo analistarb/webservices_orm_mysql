@@ -10,8 +10,14 @@
 namespace DAL
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class uspConsultarProduto_Result
+    public partial class vproduto_categoria
     {
+        public int Id { get; set; }
+        public string ProdutoDesc { get; set; }
+        public Nullable<System.DateTime> DataCadastro { get; set; }
+        public int CategoriaId { get; set; }
+        public string CategoriaDesc { get; set; }
     }
 }

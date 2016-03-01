@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="webserviceModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityContainer Name="webserviceEntities" p1:LazyLoadingEnabled="true">
-    <EntitySet Name="produto" EntityType="webserviceModel.produto" />
-    <EntitySet Name="produtocategoria" EntityType="webserviceModel.produtocategoria" />
-    <AssociationSet Name="FK_Produto_ProdutoCategoria" Association="webserviceModel.FK_Produto_ProdutoCategoria">
+<Schema Namespace="webservicesModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="webservicesEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="produto" EntityType="webservicesModel.produto" />
+    <EntitySet Name="produtocategoria" EntityType="webservicesModel.produtocategoria" />
+    <EntitySet Name="vproduto_categoria" EntityType="webservicesModel.vproduto_categoria" />
+    <AssociationSet Name="FK_Produto_ProdutoCategoria" Association="webservicesModel.FK_Produto_ProdutoCategoria">
       <End Role="produtocategoria" EntitySet="produtocategoria" />
       <End Role="produto" EntitySet="produto" />
     </AssociationSet>
-    <FunctionImport Name="uspConsultarProduto" ReturnType="Collection(webserviceModel.uspConsultarProduto_Result)" />
   </EntityContainer>
   <EntityType Name="produto">
     <Key>
@@ -17,7 +17,7 @@
     <Property Name="Descricao" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="ProdutoCategoriaId" Type="Int32" />
     <Property Name="DataCadastro" Type="DateTime" />
-    <NavigationProperty Name="produtocategoria" Relationship="webserviceModel.FK_Produto_ProdutoCategoria" FromRole="produto" ToRole="produtocategoria" />
+    <NavigationProperty Name="produtocategoria" Relationship="webservicesModel.FK_Produto_ProdutoCategoria" FromRole="produto" ToRole="produtocategoria" />
   </EntityType>
   <EntityType Name="produtocategoria">
     <Key>
@@ -25,11 +25,22 @@
     </Key>
     <Property Name="ProdutoCategoriaId" Type="Int32" Nullable="false" />
     <Property Name="Descricao" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-    <NavigationProperty Name="produto" Relationship="webserviceModel.FK_Produto_ProdutoCategoria" FromRole="produtocategoria" ToRole="produto" />
+    <NavigationProperty Name="produto" Relationship="webservicesModel.FK_Produto_ProdutoCategoria" FromRole="produtocategoria" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="vproduto_categoria">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CategoriaId" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="ProdutoDesc" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DataCadastro" Type="DateTime" />
+    <Property Name="CategoriaId" Type="Int32" Nullable="false" />
+    <Property Name="CategoriaDesc" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
   </EntityType>
   <Association Name="FK_Produto_ProdutoCategoria">
-    <End Role="produtocategoria" Type="webserviceModel.produtocategoria" Multiplicity="0..1" />
-    <End Role="produto" Type="webserviceModel.produto" Multiplicity="*" />
+    <End Role="produtocategoria" Type="webservicesModel.produtocategoria" Multiplicity="0..1" />
+    <End Role="produto" Type="webservicesModel.produto" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="produtocategoria">
         <PropertyRef Name="ProdutoCategoriaId" />
@@ -39,5 +50,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <ComplexType Name="uspConsultarProduto_Result" />
 </Schema>

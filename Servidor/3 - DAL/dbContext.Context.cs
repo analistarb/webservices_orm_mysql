@@ -12,14 +12,11 @@ namespace DAL
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Objects;
-    using System.Data.Objects.DataClasses;
-    using System.Linq;
     
-    public partial class webserviceEntities : DbContext
+    public partial class webservicesEntities : DbContext
     {
-        public webserviceEntities()
-            : base("name=webserviceEntities")
+        public webservicesEntities()
+            : base("name=webservicesEntities")
         {
         }
     
@@ -30,10 +27,6 @@ namespace DAL
     
         public DbSet<produto> produto { get; set; }
         public DbSet<produtocategoria> produtocategoria { get; set; }
-    
-        public virtual ObjectResult<uspConsultarProduto_Result> uspConsultarProduto()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspConsultarProduto_Result>("uspConsultarProduto");
-        }
+        public DbSet<vproduto_categoria> vproduto_categoria { get; set; }
     }
 }

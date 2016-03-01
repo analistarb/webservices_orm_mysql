@@ -5,40 +5,35 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 
+
 namespace BLL
 {
     public class NegProduto
     {
 
-        public List<produto> ConsultarProduto(int? intProdutoId)
+        public List<vproduto_categoria> ConsultarProduto(int? intProdutoId)
         {
             try
             {
-                List<produto> produtoColecao = new List<produto>();
+                List<vproduto_categoria> produtoColecao = new List<vproduto_categoria>();
 
-                using (var bancoDados = new webserviceEntities())
+                using (var bancoDados = new webservicesEntities())
                 {
-                    var produtoSelecionado = from p in bancoDados.produto
-                                             where ((p.ProdutoId.Equals(intProdutoId)) ||
+                    var produtoSelecionado = from p in bancoDados.vproduto_categoria
+                                             where ((p.Id.Equals(intProdutoId)) ||
                                                    (intProdutoId == null))
                                              select p;
 
                     if (produtoSelecionado.Count() > 0)
                     {
-                        foreach (produto item in produtoSelecionado)
+                        foreach (vproduto_categoria item in produtoSelecionado)
                         {
-                            produto novoItem = new produto();
-                            novoItem.ProdutoId = item.ProdutoId;
-                            novoItem.Descricao = item.Descricao;
+                            vproduto_categoria novoItem = new vproduto_categoria();
+                            novoItem.Id = item.Id;
+                            novoItem.ProdutoDesc = item.ProdutoDesc;
                             novoItem.DataCadastro = item.DataCadastro;
-                            novoItem.ProdutoCategoriaId = item.ProdutoCategoriaId;
-
-
-                            //novoItem.produtocategoria = new produtocategoria
-                            //{
-                            //    ProdutoCategoriaId = item.produtocategoria.ProdutoCategoriaId,
-                            //    Descricao = item.produtocategoria.Descricao
-                            //};
+                            novoItem.CategoriaId = item.CategoriaId;
+                            novoItem.CategoriaDesc = item.CategoriaDesc;
 
                             produtoColecao.Add(novoItem);
                         }

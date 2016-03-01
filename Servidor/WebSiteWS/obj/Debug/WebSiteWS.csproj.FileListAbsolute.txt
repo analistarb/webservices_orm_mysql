@@ -1,11 +1,11 @@
 C:\Users\Workstation\Desktop\Zero_Extremo\WebSiteWS\bin\WebSiteWS.dll
 C:\Users\Workstation\Desktop\Zero_Extremo\WebSiteWS\bin\WebSiteWS.pdb
-C:\Users\Workstation\Desktop\Zero_Extremo\WebSiteWS\obj\Debug\WebSiteWS.csprojResolveAssemblyReference.cache
-C:\Users\Workstation\Desktop\Zero_Extremo\WebSiteWS\obj\Debug\WebSiteWS.dll
-C:\Users\Workstation\Desktop\Zero_Extremo\WebSiteWS\obj\Debug\WebSiteWS.pdb
 C:\Users\Workstation\Desktop\Zero_Extremo\WebSiteWS\bin\2 - BLL.dll
 C:\Users\Workstation\Desktop\Zero_Extremo\WebSiteWS\bin\3 - DAL.dll
 C:\Users\Workstation\Desktop\Zero_Extremo\WebSiteWS\bin\EntityFramework.dll
 C:\Users\Workstation\Desktop\Zero_Extremo\WebSiteWS\bin\2 - BLL.pdb
 C:\Users\Workstation\Desktop\Zero_Extremo\WebSiteWS\bin\3 - DAL.pdb
 C:\Users\Workstation\Desktop\Zero_Extremo\WebSiteWS\bin\EntityFramework.xml
+C:\Users\Workstation\Desktop\Zero_Extremo\WebSiteWS\obj\Debug\WebSiteWS.csprojResolveAssemblyReference.cache
+C:\Users\Workstation\Desktop\Zero_Extremo\WebSiteWS\obj\Debug\WebSiteWS.dll
+C:\Users\Workstation\Desktop\Zero_Extremo\WebSiteWS\obj\Debug\WebSiteWS.pdb

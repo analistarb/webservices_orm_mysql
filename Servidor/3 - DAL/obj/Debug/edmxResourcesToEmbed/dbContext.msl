@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="webserviceModelStoreContainer" CdmEntityContainer="webserviceEntities">
+  <EntityContainerMapping StorageEntityContainer="webservicesModelStoreContainer" CdmEntityContainer="webservicesEntities">
     <EntitySetMapping Name="produto">
-      <EntityTypeMapping TypeName="webserviceModel.produto">
+      <EntityTypeMapping TypeName="webservicesModel.produto">
         <MappingFragment StoreEntitySet="produto">
           <ScalarProperty Name="ProdutoId" ColumnName="ProdutoId" />
           <ScalarProperty Name="Descricao" ColumnName="Descricao" />
@@ -12,17 +12,23 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="produtocategoria">
-      <EntityTypeMapping TypeName="webserviceModel.produtocategoria">
+      <EntityTypeMapping TypeName="webservicesModel.produtocategoria">
         <MappingFragment StoreEntitySet="produtocategoria">
           <ScalarProperty Name="ProdutoCategoriaId" ColumnName="ProdutoCategoriaId" />
           <ScalarProperty Name="Descricao" ColumnName="Descricao" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="uspConsultarProduto" FunctionName="webserviceModel.Store.uspConsultarProduto">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="webserviceModel.uspConsultarProduto_Result" />
-      </ResultMapping>
-    </FunctionImportMapping>
+    <EntitySetMapping Name="vproduto_categoria">
+      <EntityTypeMapping TypeName="webservicesModel.vproduto_categoria">
+        <MappingFragment StoreEntitySet="vproduto_categoria">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProdutoDesc" ColumnName="ProdutoDesc" />
+          <ScalarProperty Name="DataCadastro" ColumnName="DataCadastro" />
+          <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
+          <ScalarProperty Name="CategoriaDesc" ColumnName="CategoriaDesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

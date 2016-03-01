@@ -4,6 +4,6 @@ C:\Users\Workstation\Desktop\Projeto Vazio Funcionando\04) Web\Application\1 - U
 C:\Users\Workstation\Desktop\Projeto Vazio Funcionando\04) Web\Application\1 - UI\obj\Debug\1 - UI.pdb
 C:\Users\Workstation\Desktop\Zero_Extremo\1 - UI\bin\Debug\1 - UI.dll
 C:\Users\Workstation\Desktop\Zero_Extremo\1 - UI\bin\Debug\1 - UI.pdb
+C:\Users\Workstation\Desktop\Zero_Extremo\1 - UI\obj\Debug\1 - UI.csprojResolveAssemblyReference.cache
 C:\Users\Workstation\Desktop\Zero_Extremo\1 - UI\obj\Debug\1 - UI.dll
 C:\Users\Workstation\Desktop\Zero_Extremo\1 - UI\obj\Debug\1 - UI.pdb
-C:\Users\Workstation\Desktop\Zero_Extremo\1 - UI\obj\Debug\1 - UI.csprojResolveAssemblyReference.cache

@@ -4,11 +4,20 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="webserviceModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="webserviceModelStoreContainer">
-          <EntitySet Name="produto" EntityType="webserviceModel.Store.produto" store:Type="Tables" Schema="webservice" />
-          <EntitySet Name="produtocategoria" EntityType="webserviceModel.Store.produtocategoria" store:Type="Tables" Schema="webservice" />
-          <AssociationSet Name="FK_Produto_ProdutoCategoria" Association="webserviceModel.Store.FK_Produto_ProdutoCategoria">
+      <Schema Namespace="webservicesModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="webservicesModelStoreContainer">
+          <EntitySet Name="produto" EntityType="webservicesModel.Store.produto" store:Type="Tables" Schema="webservices" />
+          <EntitySet Name="produtocategoria" EntityType="webservicesModel.Store.produtocategoria" store:Type="Tables" Schema="webservices" />
+          <EntitySet Name="vproduto_categoria" EntityType="webservicesModel.Store.vproduto_categoria" store:Type="Views" store:Schema="webservices" store:Name="vproduto_categoria">
+            <DefiningQuery>SELECT
+      `vproduto_categoria`.`Id`, 
+      `vproduto_categoria`.`ProdutoDesc`, 
+      `vproduto_categoria`.`DataCadastro`, 
+      `vproduto_categoria`.`CategoriaId`, 
+      `vproduto_categoria`.`CategoriaDesc`
+      FROM `vproduto_categoria` AS `vproduto_categoria`</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Produto_ProdutoCategoria" Association="webservicesModel.Store.FK_Produto_ProdutoCategoria">
             <End Role="produtocategoria" EntitySet="produtocategoria" />
             <End Role="produto" EntitySet="produto" />
           </AssociationSet>
@@ -29,9 +38,23 @@
           <Property Name="ProdutoCategoriaId" Type="int" Nullable="false" />
           <Property Name="Descricao" Type="varchar" MaxLength="50" />
         </EntityType>
+        <!--Erros Encontrados Durante a Geração:
+      aviso 6002: A tabela/exibição 'webservices.vproduto_categoria' não tem uma chave primária definida. A chave foi inferida e a definição criada como uma tabela/exibição somente leitura.
+      -->
+        <EntityType Name="vproduto_categoria">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CategoriaId" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ProdutoDesc" Type="varchar" MaxLength="50" />
+          <Property Name="DataCadastro" Type="datetime" />
+          <Property Name="CategoriaId" Type="int" Nullable="false" />
+          <Property Name="CategoriaDesc" Type="varchar" MaxLength="50" />
+        </EntityType>
         <Association Name="FK_Produto_ProdutoCategoria">
-          <End Role="produtocategoria" Type="webserviceModel.Store.produtocategoria" Multiplicity="0..1" />
-          <End Role="produto" Type="webserviceModel.Store.produto" Multiplicity="*" />
+          <End Role="produtocategoria" Type="webservicesModel.Store.produtocategoria" Multiplicity="0..1" />
+          <End Role="produto" Type="webservicesModel.Store.produto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="produtocategoria">
               <PropertyRef Name="ProdutoCategoriaId" />
@@ -41,20 +64,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="uspConsultarProduto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="webservice" />
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="webserviceModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="webserviceEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="produto" EntityType="webserviceModel.produto" />
-          <EntitySet Name="produtocategoria" EntityType="webserviceModel.produtocategoria" />
-          <AssociationSet Name="FK_Produto_ProdutoCategoria" Association="webserviceModel.FK_Produto_ProdutoCategoria">
+      <Schema Namespace="webservicesModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="webservicesEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="produto" EntityType="webservicesModel.produto" />
+          <EntitySet Name="produtocategoria" EntityType="webservicesModel.produtocategoria" />
+          <EntitySet Name="vproduto_categoria" EntityType="webservicesModel.vproduto_categoria" />
+          <AssociationSet Name="FK_Produto_ProdutoCategoria" Association="webservicesModel.FK_Produto_ProdutoCategoria">
             <End Role="produtocategoria" EntitySet="produtocategoria" />
             <End Role="produto" EntitySet="produto" />
           </AssociationSet>
-          <FunctionImport Name="uspConsultarProduto" ReturnType="Collection(webserviceModel.uspConsultarProduto_Result)" />
         </EntityContainer>
         <EntityType Name="produto">
           <Key>
@@ -64,7 +86,7 @@
           <Property Name="Descricao" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="ProdutoCategoriaId" Type="Int32" />
           <Property Name="DataCadastro" Type="DateTime" />
-          <NavigationProperty Name="produtocategoria" Relationship="webserviceModel.FK_Produto_ProdutoCategoria" FromRole="produto" ToRole="produtocategoria" />
+          <NavigationProperty Name="produtocategoria" Relationship="webservicesModel.FK_Produto_ProdutoCategoria" FromRole="produto" ToRole="produtocategoria" />
         </EntityType>
         <EntityType Name="produtocategoria">
           <Key>
@@ -72,11 +94,22 @@
           </Key>
           <Property Name="ProdutoCategoriaId" Type="Int32" Nullable="false" />
           <Property Name="Descricao" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="produto" Relationship="webserviceModel.FK_Produto_ProdutoCategoria" FromRole="produtocategoria" ToRole="produto" />
+          <NavigationProperty Name="produto" Relationship="webservicesModel.FK_Produto_ProdutoCategoria" FromRole="produtocategoria" ToRole="produto" />
+        </EntityType>
+        <EntityType Name="vproduto_categoria">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CategoriaId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ProdutoDesc" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DataCadastro" Type="DateTime" />
+          <Property Name="CategoriaId" Type="Int32" Nullable="false" />
+          <Property Name="CategoriaDesc" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
         </EntityType>
         <Association Name="FK_Produto_ProdutoCategoria">
-          <End Role="produtocategoria" Type="webserviceModel.produtocategoria" Multiplicity="0..1" />
-          <End Role="produto" Type="webserviceModel.produto" Multiplicity="*" />
+          <End Role="produtocategoria" Type="webservicesModel.produtocategoria" Multiplicity="0..1" />
+          <End Role="produto" Type="webservicesModel.produto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="produtocategoria">
               <PropertyRef Name="ProdutoCategoriaId" />
@@ -86,15 +119,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="uspConsultarProduto_Result" />
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="webserviceModelStoreContainer" CdmEntityContainer="webserviceEntities">
+        <EntityContainerMapping StorageEntityContainer="webservicesModelStoreContainer" CdmEntityContainer="webservicesEntities">
           <EntitySetMapping Name="produto">
-            <EntityTypeMapping TypeName="webserviceModel.produto">
+            <EntityTypeMapping TypeName="webservicesModel.produto">
               <MappingFragment StoreEntitySet="produto">
                 <ScalarProperty Name="ProdutoId" ColumnName="ProdutoId" />
                 <ScalarProperty Name="Descricao" ColumnName="Descricao" />
@@ -104,18 +136,24 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="produtocategoria">
-            <EntityTypeMapping TypeName="webserviceModel.produtocategoria">
+            <EntityTypeMapping TypeName="webservicesModel.produtocategoria">
               <MappingFragment StoreEntitySet="produtocategoria">
                 <ScalarProperty Name="ProdutoCategoriaId" ColumnName="ProdutoCategoriaId" />
                 <ScalarProperty Name="Descricao" ColumnName="Descricao" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="uspConsultarProduto" FunctionName="webserviceModel.Store.uspConsultarProduto">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="webserviceModel.uspConsultarProduto_Result" />
-            </ResultMapping>
-          </FunctionImportMapping>
+          <EntitySetMapping Name="vproduto_categoria">
+            <EntityTypeMapping TypeName="webservicesModel.vproduto_categoria">
+              <MappingFragment StoreEntitySet="vproduto_categoria">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProdutoDesc" ColumnName="ProdutoDesc" />
+                <ScalarProperty Name="DataCadastro" ColumnName="DataCadastro" />
+                <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
+                <ScalarProperty Name="CategoriaDesc" ColumnName="CategoriaDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

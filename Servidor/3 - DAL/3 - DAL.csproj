@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8B11763A-B6C8-4C13-8B63-DAF8121DDB84}</ProjectGuid>
+    <ProjectGuid>{359B08DB-7F32-41AE-9739-598B11A4D838}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DAL</RootNamespace>
@@ -68,7 +68,7 @@
       <DependentUpon>dbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="uspConsultarProduto_Result.cs">
+    <Compile Include="vproduto_categoria.cs">
       <DependentUpon>dbContext.tt</DependentUpon>
     </Compile>
   </ItemGroup>

@@ -27,7 +27,7 @@ namespace WebSiteWS
             try
             {
                 NegProduto negProduto = new NegProduto();
-                List<produto> colecao = new List<produto>();
+                List<vproduto_categoria> colecao = new List<vproduto_categoria>();
                 JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
 
                 string json = string.Empty;

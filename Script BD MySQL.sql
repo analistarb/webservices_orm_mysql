@@ -1,4 +1,5 @@
 
+
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
@@ -6,14 +7,14 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `produto`;
 CREATE TABLE `produto` (
-  `ProdutoId` int(11) NOT NULL,
-  `Descricao` varchar(50) default NULL,
-  `ProdutoCategoriaId` int(11) default NULL,
-  `DataCadastro` datetime default NULL,
-  PRIMARY KEY  (`ProdutoId`),
+  `ProdutoId` int(11) NOT NULL AUTO_INCREMENT,
+  `Descricao` varchar(50) DEFAULT NULL,
+  `ProdutoCategoriaId` int(11) DEFAULT NULL,
+  `DataCadastro` datetime DEFAULT NULL,
+  PRIMARY KEY (`ProdutoId`),
   KEY `FK_Produto_ProdutoCategoria` (`ProdutoCategoriaId`),
   CONSTRAINT `FK_Produto_ProdutoCategoria` FOREIGN KEY (`ProdutoCategoriaId`) REFERENCES `produtocategoria` (`ProdutoCategoriaId`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of produto
@@ -30,10 +31,10 @@ INSERT INTO `produto` VALUES ('6', 'HP LASERJET', '3', '2016-01-24 14:26:55');
 -- ----------------------------
 DROP TABLE IF EXISTS `produtocategoria`;
 CREATE TABLE `produtocategoria` (
-  `ProdutoCategoriaId` int(11) NOT NULL,
-  `Descricao` varchar(50) default NULL,
-  PRIMARY KEY  (`ProdutoCategoriaId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `ProdutoCategoriaId` int(11) NOT NULL AUTO_INCREMENT,
+  `Descricao` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`ProdutoCategoriaId`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of produtocategoria
